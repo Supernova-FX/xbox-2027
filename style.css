@@ -31,40 +31,53 @@ nav a:last-child {
 
 h1, h2, h3 {
   color: #9BF00B;
-  margin-top: 24px;
+  text-align: center;
+  margin-top: 32px;
   font-weight: 700;
 }
 
-.console-grid,
-.spec-grid,
-.perf-tiers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
+/* Divider (green quadrilateral) */
+.divider {
+  display: block;
+  margin: 16px auto 32px auto;
+  width: 120px; /* Xbox.com size */
+  height: auto;
 }
 
+/* Section spacing */
+section {
+  margin-top: 48px;
+}
+
+/* Full-width images */
+.full-width-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px 0;
+}
+
+/* Inline icons */
+.inline-icon {
+  width: 140px;
+  display: block;
+  margin: 16px auto;
+}
+
+/* Medium content images */
+.medium-img {
+  width: 70%;
+  display: block;
+  margin: 24px auto;
+}
+
+/* Cards */
 .card {
   background: #151515;
   border-radius: 8px;
   padding: 16px;
   border: 1px solid #1f1f1f;
-}
-
-.tagline {
-  margin-top: 4px;
-  color: #cfcfcf;
-}
-
-.price {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 8px;
-  color: #9BF00B;
-}
-
-ul {
-  padding-left: 20px;
+  margin: 16px 0;
 }
 
 footer {
