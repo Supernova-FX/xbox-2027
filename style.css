@@ -1,4 +1,4 @@
-/* Global Xbox Styling */
+/* GLOBAL STYLING */
 body {
   font-family: "Segoe UI", "Segoe UI Variable", Arial, sans-serif;
   margin: 0;
@@ -36,20 +36,20 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
-/* Divider (green quadrilateral) */
+/* CENTER ALL TEXT */
+.center-text {
+  text-align: center;
+}
+
+/* DIVIDER (GREEN QUADRILATERAL) */
 .divider {
   display: block;
   margin: 16px auto 32px auto;
-  width: 120px; /* Xbox.com size */
+  width: 120px;
   height: auto;
 }
 
-/* Section spacing */
-section {
-  margin-top: 48px;
-}
-
-/* Full-width images */
+/* FULL-WIDTH IMAGES */
 .full-width-img {
   width: 100%;
   height: auto;
@@ -57,29 +57,56 @@ section {
   margin: 24px 0;
 }
 
-/* Inline icons */
-.inline-icon {
-  width: 140px;
-  display: block;
-  margin: 16px auto;
-}
-
-/* Medium content images */
+/* MEDIUM IMAGES */
 .medium-img {
   width: 70%;
   display: block;
   margin: 24px auto;
 }
 
-/* Cards */
-.card {
-  background: #151515;
-  border-radius: 8px;
-  padding: 16px;
-  border: 1px solid #1f1f1f;
-  margin: 16px 0;
+/* SMALL INLINE ICONS */
+.inline-icon {
+  width: 140px;
+  display: block;
+  margin: 16px auto;
 }
 
+/* BLOB CARDS (MODE CARDS) */
+.mode-card {
+  background: #151515;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 260px;
+  text-align: center;
+  border: 1px solid #1f1f1f;
+}
+
+.mode-card h3 {
+  color: #9BF00B;
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.mode-card p {
+  color: #e5e5e5;
+  margin: 0;
+  font-size: 18px;
+}
+
+/* GENERIC CARD (USED ON INDEX PAGE) */
+.card {
+  background: #151515;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #1f1f1f;
+  margin: 16px auto;
+  width: 300px;
+  text-align: center;
+}
+
+/* FOOTER */
 footer {
   font-size: 12px;
   color: #777;
