@@ -1,0 +1,75 @@
+/* Global Xbox Styling */
+body {
+  font-family: "Segoe UI", "Segoe UI Variable", Arial, sans-serif;
+  margin: 0;
+  background: #0b0b0b;
+  color: #f5f5f5;
+}
+
+header, nav, main, footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #9BF00B;
+  margin-right: 16px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+h1, h2, h3 {
+  color: #9BF00B;
+  margin-top: 24px;
+  font-weight: 700;
+}
+
+.console-grid,
+.spec-grid,
+.perf-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  background: #151515;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #1f1f1f;
+}
+
+.tagline {
+  margin-top: 4px;
+  color: #cfcfcf;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 8px;
+  color: #9BF00B;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+footer {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  padding-bottom: 32px;
+}
