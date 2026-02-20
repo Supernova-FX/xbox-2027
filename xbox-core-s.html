@@ -4,29 +4,12 @@
   <meta charset="UTF-8">
   <title>Xbox - Xbox Core S</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #0b0b0b; color: #f5f5f5; }
-    header, nav, main, footer { max-width: 960px; margin: 0 auto; padding: 16px; }
-    header { display: flex; justify-content: space-between; align-items: center; }
-    nav a { color: #9fe368; margin-right: 16px; text-decoration: none; font-weight: 600; }
-    nav a:last-child { margin-right: 0; }
-    h1, h2, h3 { color: #9fe368; margin-top: 24px; }
-    .hero { margin-top: 16px; }
-    .price { font-size: 20px; font-weight: bold; margin-top: 8px; }
-    .tagline { margin-top: 4px; color: #cccccc; }
-    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
-    .card { background: #151515; border-radius: 8px; padding: 16px; }
-    .perf-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
-    .section { margin-top: 32px; }
-    ul { padding-left: 20px; }
-    footer { font-size: 12px; color: #777; text-align: center; padding-bottom: 32px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
-    <div class="logo">
-      <h1>Xbox</h1>
-    </div>
+    <h1>Xbox</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="xbox-core-x.html">Xbox Core X</a>
@@ -35,75 +18,46 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section>
       <h2>Xbox Core S</h2>
       <p class="price">Pre-order now at $399</p>
-      <p class="tagline">Welcome to the next-gen experience and the best value in gaming.</p>
-      <p>UP TO 160 FPS • HDR • High Dynamic Range</p>
+      <p class="tagline">The best value in next‑gen gaming.</p>
+      <p>UP TO 160 FPS • HDR</p>
     </section>
 
-    <section class="section">
+    <section>
       <h2>Xbox Velocity Architecture 2.0</h2>
       <div class="spec-grid">
         <div class="card">
           <ul>
             <li>Custom AMD Zen 5 CPU and RDNA 4 GPU</li>
             <li>16 GB GDDR7 unified memory</li>
-            <li>1 TB PCIe 4.0 solid‑state storage</li>
+            <li>1 TB PCIe 4.0 SSD</li>
           </ul>
         </div>
         <div class="card">
           <ul>
-            <li>High‑efficiency thermal design built for quiet, reliable operation in a compact form factor.</li>
-            <li>Hybrid Mode exclusive, supporting modern titles, cloud‑enabled experiences, and migrated games within the unified next‑gen environment.</li>
+            <li>High‑efficiency thermal design</li>
+            <li>Hybrid Mode exclusive</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section>
       <h2>Performance Targets</h2>
       <div class="perf-tiers">
-        <div class="card">
-          <h3>Quality</h3>
-          <p>4K @ 60 FPS</p>
-        </div>
-        <div class="card">
-          <h3>Moderate</h3>
-          <p>1440p @ 120 FPS</p>
-        </div>
-        <div class="card">
-          <h3>Performance</h3>
-          <p>1080p @ 160 FPS</p>
-        </div>
+        <div class="card"><h3>Quality</h3><p>4K @ 60 FPS</p></div>
+        <div class="card"><h3>Moderate</h3><p>1440p @ 120 FPS</p></div>
+        <div class="card"><h3>Performance</h3><p>1080p @ 160 FPS</p></div>
       </div>
     </section>
 
-    <section class="section">
+    <section>
       <h2>Hybrid Mode</h2>
       <p>
-        Hybrid Mode is a streamlined Windows‑based environment built for power and flexibility. It runs on a light
-        Windows 11 foundation with the Xbox Full‑Screen Experience front and center. It supports third‑party stores
-        like Epic, Steam, and EA, offers mod support and deeper settings, and lets developers target PC and Xbox with
-        the same build.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>Third‑Party Storefront Integration</h2>
-      <p>
-        Xbox Core S brings broad storefront support through Hybrid Mode, giving players access to Epic, Steam, EA, and
-        more in addition to the Microsoft Store. All purchases use Xbox’s secure entitlement system and appear together
-        in a unified library. Designed for the future, Core S focuses entirely on next‑gen Hybrid Mode.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>Transitioning From Legacy To Hybrid</h2>
-      <p>
-        Over time, games move from Legacy Mode into Hybrid Mode. We test and certify older games to run in Hybrid Mode.
-        Once ready, those games launch directly in Hybrid Mode instead of Legacy. Gradually, more of the library lives
-        in the new environment.
+        Hybrid Mode is a streamlined Windows‑based environment built for power and flexibility. It supports third‑party
+        stores like Epic, Steam, and EA, offers mod support, and lets developers target PC and Xbox with the same build.
       </p>
     </section>
   </main>
