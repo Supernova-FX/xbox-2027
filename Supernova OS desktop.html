@@ -79,8 +79,8 @@
     position: absolute;
     top: 120px;
     left: 120px;
-    width: 420px;
-    height: 300px;
+    width: 520px;
+    height: 360px;
     background: var(--window-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -123,8 +123,8 @@
   .close { background: #ef4444; }
 
   .window-content {
-    padding: 14px;
-    font-size: 0.9rem;
+    padding: 0;
+    height: calc(100% - 34px);
   }
 
   iframe {
@@ -138,25 +138,10 @@
 
 <body>
 
-<!-- GOOGLE WINDOW -->
-<div id="googleWin" class="window">
-  <div class="titlebar">
-    <span>Google</span>
-    <div class="controls">
-      <div class="min"></div>
-      <div class="max"></div>
-      <div class="close"></div>
-    </div>
-  </div>
-  <div class="window-content">
-    <iframe src="https://www.google.com"></iframe>
-  </div>
-</div>
-
-<!-- GAMES WINDOW -->
+<!-- GAMES WINDOW (Supernova FX) -->
 <div id="gamesWin" class="window">
   <div class="titlebar">
-    <span>Games</span>
+    <span>Supernova FX</span>
     <div class="controls">
       <div class="min"></div>
       <div class="max"></div>
@@ -164,21 +149,31 @@
     </div>
   </div>
   <div class="window-content">
-    <iframe src="https://sites.google.com/view/supernova-gx/all?authuser=0"></iframe>
+    <iframe src="https://supernova-fx.github.io/"></iframe>
   </div>
 </div>
 
 <!-- DOCK -->
 <div class="dock">
-  <div class="dock-item" onclick="openWindow('googleWin')">
+
+  <!-- Google (opens new tab) -->
+  <div class="dock-item" onclick="window.open('https://www.google.com', '_blank')">
     <img src="https://www.google.com/favicon.ico">
     <span>Google</span>
   </div>
 
+  <!-- Games (floating window) -->
   <div class="dock-item" onclick="openWindow('gamesWin')">
     <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
     <span>Games</span>
   </div>
+
+  <!-- GX (opens new tab) -->
+  <div class="dock-item" onclick="window.open('https://sites.google.com/view/supernova-gx/all?authuser=0', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
+    <span>GX</span>
+  </div>
+
 </div>
 
 <script>
@@ -198,6 +193,7 @@
       offsetX = e.clientX - win.offsetLeft;
       offsetY = e.clientY - win.offsetTop;
       bar.style.cursor = "grabbing";
+      win.style.zIndex = Date.now();
     });
 
     document.addEventListener('mousemove', e => {
@@ -220,8 +216,8 @@
     max.onclick = () => {
       if (win.classList.contains("maximized")) {
         win.classList.remove("maximized");
-        win.style.width = "420px";
-        win.style.height = "300px";
+        win.style.width = "520px";
+        win.style.height = "360px";
         win.style.left = "120px";
         win.style.top = "120px";
       } else {
