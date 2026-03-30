@@ -9,10 +9,11 @@
   :root {
     --bg: #050712;
     --accent: #7b5cff;
+    --accent-soft: rgba(123, 92, 255, 0.35);
     --text-main: #f5f5ff;
     --text-muted: #9ca3c7;
     --border: rgba(255,255,255,0.08);
-    --window-bg: rgba(10,12,25,0.85);
+    --window-bg: rgba(10,12,25,0.9);
     --window-blur: blur(14px);
   }
 
@@ -26,7 +27,8 @@
       radial-gradient(circle at bottom, #120b33 0, transparent 55%),
       var(--bg);
     animation: bgFloat 14s ease-in-out infinite alternate;
-    font-family: system-ui, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "Segoe UI", sans-serif;
     color: var(--text-main);
   }
 
@@ -35,7 +37,19 @@
     100% { background-position: 30px 60px, -30px -60px; }
   }
 
-  /* --- Dock --- */
+  .desktop-clock {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(5,7,18,0.7);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    backdrop-filter: blur(12px);
+  }
+
   .dock {
     position: absolute;
     bottom: 22px;
@@ -74,7 +88,6 @@
     color: var(--text-muted);
   }
 
-  /* --- Windows --- */
   .window {
     position: absolute;
     top: 120px;
@@ -87,6 +100,17 @@
     backdrop-filter: var(--window-blur);
     box-shadow: 0 18px 40px rgba(0,0,0,0.45);
     display: none;
+    overflow: hidden;
+  }
+
+  .window.small {
+    width: 320px;
+    height: 220px;
+  }
+
+  .window.medium {
+    width: 420px;
+    height: 280px;
   }
 
   .titlebar {
@@ -125,8 +149,10 @@
   .max   { background: #22c55e; }
 
   .window-content {
-    padding: 0;
+    padding: 10px 12px;
     height: calc(100% - 34px);
+    font-size: 0.85rem;
+    color: var(--text-main);
   }
 
   iframe {
@@ -135,27 +161,162 @@
     border: none;
     border-radius: 0 0 12px 12px;
   }
+
+  .clock-display {
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .clock-date {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .calc-display {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(15,23,42,0.9);
+    font-size: 1.1rem;
+    text-align: right;
+    margin-bottom: 10px;
+    font-family: "JetBrains Mono", ui-monospace;
+  }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 8px;
+  }
+
+  .calc-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(15,23,42,0.9);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: background 0.12s ease-out, transform 0.12s ease-out;
+  }
+
+  .calc-btn.op {
+    color: var(--accent);
+  }
+
+  .calc-btn:hover {
+    background: rgba(30,64,175,0.9);
+    transform: translateY(-1px);
+  }
+
+  .terminal-output {
+    height: calc(100% - 40px);
+    background: #020617;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: "JetBrains Mono", ui-monospace;
+    font-size: 0.75rem;
+    color: #a5f3fc;
+    overflow-y: auto;
+    border: 1px solid rgba(148,163,184,0.4);
+  }
+
+  .terminal-input-row {
+    margin-top: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-family: "JetBrains Mono", ui-monospace;
+    font-size: 0.75rem;
+  }
+
+  .terminal-input-row span {
+    color: #22c55e;
+  }
+
+  .terminal-input-row input {
+    flex: 1;
+    background: #020617;
+    border-radius: 6px;
+    border: 1px solid rgba(148,163,184,0.4);
+    padding: 4px 6px;
+    color: #e5e7eb;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .theme-card {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(15,23,42,0.9);
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+      border-color 0.12s ease-out;
+  }
+
+  .theme-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+    border-color: var(--accent);
+  }
+
+  .notes-textarea {
+    width: 100%;
+    height: calc(100% - 24px);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(15,23,42,0.95);
+    padding: 8px 10px;
+    resize: none;
+    outline: none;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  .notes-hint {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  body.theme-nebula {
+    --bg: #050712;
+    --accent: #7b5cff;
+  }
+
+  body.theme-eclipse {
+    --bg: #020617;
+    --accent: #f97316;
+  }
+
+  body.theme-aurora {
+    --bg: #001524;
+    --accent: #22c55e;
+  }
 </style>
 </head>
 
 <body>
 
-<!-- DUCKDUCKGO WINDOW -->
-<div id="ddgWin" class="window">
-  <div class="titlebar">
-    <div class="controls">
-      <div class="close"></div>
-      <div class="min"></div>
-      <div class="max"></div>
-    </div>
-    <span>DuckDuckGo</span>
-  </div>
-  <div class="window-content">
-    <iframe src="https://www.duckduckgo.com/"></iframe>
-  </div>
-</div>
+<div class="desktop-clock" id="desktopClock"></div>
 
-<!-- FX WINDOW -->
 <div id="fxWin" class="window">
   <div class="titlebar">
     <div class="controls">
@@ -170,29 +331,146 @@
   </div>
 </div>
 
-<!-- DOCK -->
-<div class="dock">
-
-  <!-- DuckDuckGo -->
-  <div class="dock-item" onclick="openWindow('ddgWin')">
-    <img src="https://duckduckgo.com/favicon.ico">
-    <span>Search</span>
+<div id="clockWin" class="window small">
+  <div class="titlebar">
+    <div class="controls">
+      <div class="close"></div>
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <span>Clock</span>
   </div>
+  <div class="window-content">
+    <div class="clock-display" id="clockDisplay">00:00</div>
+    <div class="clock-date" id="clockDate">Loading...</div>
+  </div>
+</div>
 
-  <!-- FX -->
+<div id="calcWin" class="window medium">
+  <div class="titlebar">
+    <div class="controls">
+      <div class="close"></div>
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <span>Calculator</span>
+  </div>
+  <div class="window-content">
+    <input id="calcDisplay" class="calc-display" type="text" value="0" readonly />
+    <div class="calc-grid">
+      <button class="calc-btn" data-key="C">C</button>
+      <button class="calc-btn" data-key="←">←</button>
+      <button class="calc-btn op" data-key="/">÷</button>
+      <button class="calc-btn op" data-key="*">×</button>
+
+      <button class="calc-btn" data-key="7">7</button>
+      <button class="calc-btn" data-key="8">8</button>
+      <button class="calc-btn" data-key="9">9</button>
+      <button class="calc-btn op" data-key="-">−</button>
+
+      <button class="calc-btn" data-key="4">4</button>
+      <button class="calc-btn" data-key="5">5</button>
+      <button class="calc-btn" data-key="6">6</button>
+      <button class="calc-btn op" data-key="+">+</button>
+
+      <button class="calc-btn" data-key="1">1</button>
+      <button class="calc-btn" data-key="2">2</button>
+      <button class="calc-btn" data-key="3">3</button>
+      <button class="calc-btn op" data-key="=">=</button>
+
+      <button class="calc-btn" data-key="0" style="grid-column: span 2;">0</button>
+      <button class="calc-btn" data-key=".">.</button>
+      <button class="calc-btn" data-key="%">%</button>
+    </div>
+  </div>
+</div>
+
+<div id="termWin" class="window">
+  <div class="titlebar">
+    <div class="controls">
+      <div class="close"></div>
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <span>Supernova Terminal</span>
+  </div>
+  <div class="window-content">
+    <div class="terminal-output" id="termOutput"></div>
+    <div class="terminal-input-row">
+      <span>guest@supernova:~$</span>
+      <input id="termInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+</div>
+
+<div id="themeWin" class="window medium">
+  <div class="titlebar">
+    <div class="controls">
+      <div class="close"></div>
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <span>Themes</span>
+  </div>
+  <div class="window-content">
+    <div class="theme-grid">
+      <div class="theme-card" data-theme="theme-nebula">Nebula</div>
+      <div class="theme-card" data-theme="theme-eclipse">Eclipse</div>
+      <div class="theme-card" data-theme="theme-aurora">Aurora</div>
+    </div>
+  </div>
+</div>
+
+<div id="notesWin" class="window">
+  <div class="titlebar">
+    <div class="controls">
+      <div class="close"></div>
+      <div class="min"></div>
+      <div class="max"></div>
+    </div>
+    <span>Notes</span>
+  </div>
+  <div class="window-content">
+    <textarea id="notesArea" class="notes-textarea"></textarea>
+  </div>
+</div>
+
+<div class="dock">
   <div class="dock-item" onclick="openWindow('fxWin')">
     <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
     <span>FX</span>
   </div>
 
-  <!-- GX (new tab) -->
   <div class="dock-item" onclick="window.open('https://sites.google.com/view/supernova-gx/all?authuser=0', '_blank')">
     <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
     <span>GX</span>
   </div>
 
-</div>
+  <div class="dock-item" onclick="openWindow('clockWin')">
+    <img src="https://cdn-icons-png.flaticon.com/512/1827/1827310.png">
+    <span>Clock</span>
+  </div>
 
+  <div class="dock-item" onclick="openWindow('calcWin')">
+    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png">
+    <span>Calc</span>
+  </div>
+
+  <div class="dock-item" onclick="openWindow('termWin')">
+    <img src="https://cdn-icons-png.flaticon.com/512/565/565547.png">
+    <span>Terminal</span>
+  </div>
+
+  <div class="dock-item" onclick="openWindow('themeWin')">
+    <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png">
+    <span>Themes</span>
+  </div>
+
+  <div class="dock-item" onclick="openWindow('notesWin')">
+    <img src="https://cdn-icons-png.flaticon.com/512/1827/1827312.png">
+    <span>Notes</span>
+  </div>
+</div>
 <script>
   function openWindow(id) {
     const win = document.getElementById(id);
@@ -200,7 +478,6 @@
     win.style.zIndex = Date.now();
   }
 
-  // Window dragging
   document.querySelectorAll('.window').forEach(win => {
     const bar = win.querySelector('.titlebar');
     let offsetX, offsetY, dragging = false;
@@ -224,7 +501,6 @@
       bar.style.cursor = "grab";
     });
 
-    // Controls
     const [close, min, max] = win.querySelectorAll('.controls div');
 
     close.onclick = () => win.style.display = "none";
@@ -233,8 +509,10 @@
     max.onclick = () => {
       if (win.classList.contains("maximized")) {
         win.classList.remove("maximized");
-        win.style.width = "520px";
-        win.style.height = "360px";
+        win.style.width = win.classList.contains('small') ? "320px" :
+                          win.classList.contains('medium') ? "420px" : "520px";
+        win.style.height = win.classList.contains('small') ? "220px" :
+                           win.classList.contains('medium') ? "280px" : "360px";
         win.style.left = "120px";
         win.style.top = "120px";
       } else {
@@ -245,6 +523,170 @@
         win.style.height = "100vh";
       }
     };
+  });
+
+  function updateClocks() {
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2,'0');
+    const m = now.getMinutes().toString().padStart(2,'0');
+    const s = now.getSeconds().toString().padStart(2,'0');
+
+    const desktopClock = document.getElementById('desktopClock');
+    if (desktopClock) desktopClock.textContent = `${h}:${m}:${s}`;
+
+    const clockDisplay = document.getElementById('clockDisplay');
+    const clockDate = document.getElementById('clockDate');
+    if (clockDisplay && clockDate) {
+      clockDisplay.textContent = `${h}:${m}:${s}`;
+      clockDate.textContent = now.toLocaleDateString(undefined, {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+  }
+  updateClocks();
+  setInterval(updateClocks, 1000);
+
+  const calcDisplay = document.getElementById('calcDisplay');
+  let calcBuffer = "0";
+  let calcLastOp = null;
+  let calcStored = null;
+
+  function updateCalcDisplay() {
+    calcDisplay.value = calcBuffer;
+  }
+
+  function handleCalcKey(key) {
+    if (!isNaN(key)) {
+      if (calcBuffer === "0") calcBuffer = key;
+      else calcBuffer += key;
+    } else if (key === ".") {
+      if (!calcBuffer.includes(".")) calcBuffer += ".";
+    } else if (key === "C") {
+      calcBuffer = "0";
+      calcLastOp = null;
+      calcStored = null;
+    } else if (key === "←") {
+      calcBuffer = calcBuffer.length > 1 ? calcBuffer.slice(0,-1) : "0";
+    } else if (["+", "-", "*", "/", "%"].includes(key)) {
+      if (calcStored === null) {
+        calcStored = parseFloat(calcBuffer);
+      } else if (calcLastOp) {
+        const current = parseFloat(calcBuffer);
+        calcStored = evalCalc(calcStored, current, calcLastOp);
+      }
+      calcLastOp = key;
+      calcBuffer = "0";
+    } else if (key === "=") {
+      if (calcLastOp !== null && calcStored !== null) {
+        const current = parseFloat(calcBuffer);
+        calcBuffer = String(evalCalc(calcStored, current, calcLastOp));
+        calcStored = null;
+        calcLastOp = null;
+      }
+    }
+    updateCalcDisplay();
+  }
+
+  function evalCalc(a, b, op) {
+    if (op === "+") return a + b;
+    if (op === "-") return a - b;
+    if (op === "*") return a * b;
+    if (op === "/") return b === 0 ? 0 : a / b;
+    if (op === "%") return a % b;
+    return b;
+  }
+
+  document.querySelectorAll('.calc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-key');
+      handleCalcKey(key);
+    });
+  });
+  updateCalcDisplay();
+
+  const termOutput = document.getElementById('termOutput');
+  const termInput = document.getElementById('termInput');
+
+  function termPrint(line) {
+    const div = document.createElement('div');
+    div.textContent = line;
+    termOutput.appendChild(div);
+    termOutput.scrollTop = termOutput.scrollHeight;
+  }
+
+  function handleCommand(cmd) {
+    const trimmed = cmd.trim();
+    if (!trimmed) return;
+
+    termPrint(`guest@supernova:~$ ${trimmed}`);
+
+    const [base, ...rest] = trimmed.split(" ");
+    const arg = rest.join(" ");
+
+    switch (base) {
+      case "help":
+        termPrint("Commands: help, about, clear, theme, echo");
+        break;
+      case "about":
+        termPrint("Supernova OS — experimental web desktop environment.");
+        break;
+      case "clear":
+        termOutput.innerHTML = "";
+        break;
+      case "theme":
+        const map = {
+          nebula: "theme-nebula",
+          eclipse: "theme-eclipse",
+          aurora: "theme-aurora"
+        };
+        if (map[arg]) {
+          document.body.className = map[arg];
+          localStorage.setItem("supernova_theme", map[arg]);
+          termPrint(`Theme set to ${arg}.`);
+        } else {
+          termPrint("Usage: theme nebula|eclipse|aurora");
+        }
+        break;
+      case "echo":
+        termPrint(arg);
+        break;
+      default:
+        termPrint(`Command not found: ${base}`);
+    }
+  }
+
+  termPrint("Supernova Terminal");
+  termPrint("Type 'help' to begin.");
+
+  termInput.addEventListener('keydown', e => {
+    if (e.key === "Enter") {
+      handleCommand(termInput.value);
+      termInput.value = "";
+    }
+  });
+
+  document.querySelectorAll('.theme-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const theme = card.getAttribute('data-theme');
+      document.body.className = theme;
+      localStorage.setItem("supernova_theme", theme);
+    });
+  });
+
+  const savedTheme = localStorage.getItem("supernova_theme");
+  if (savedTheme) document.body.className = savedTheme;
+
+  const notesArea = document.getElementById('notesArea');
+  const NOTES_KEY = "supernova_os_notes";
+
+  const savedNotes = localStorage.getItem(NOTES_KEY);
+  if (savedNotes !== null) notesArea.value = savedNotes;
+
+  notesArea.addEventListener('input', () => {
+    localStorage.setItem(NOTES_KEY, notesArea.value);
   });
 </script>
 
