@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedTitle = localStorage.getItem("cloakTitle");
-      const savedIcon = localStorage.getItem("cloakIcon");
+<meta charset="UTF-8">
+<title>Supernova Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: system-ui, sans-serif;
+    background: transparent;
+    color: white;
+  }
+  .search-box {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(15,23,42,0.85);
+    color: white;
+    outline: none;
+    margin-bottom: 18px;
+    backdrop-filter: blur(10px);
+  }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .game-grid button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15,23,42,0.85);
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.15s ease, background 0.15s ease;
+    backdrop-filter: blur(10px);
+  }
+  .game-grid button:hover {
+    transform: translateY(-3px);
+    background: rgba(30,41,59,0.9);
+  }
+</style>
+<script>
+  function launchStealth(url) {
+    window.open(url, "_blank");
+  }
+  function filterGames() {
+    const query = document.getElementById("search").value.toLowerCase();
+    const buttons = document.querySelectorAll(".game-grid button");
 
-      if (savedTitle) document.title = savedTitle;
-
-      if (savedIcon) {
-        let iconLink = document.querySelector("link[rel~='icon']");
-        if (!iconLink) {
-          iconLink = document.createElement("link");
-          iconLink.rel = "icon";
-          document.head.appendChild(iconLink);
-        }
-        iconLink.href = savedIcon;
-      }
+    buttons.forEach(btn => {
+      const text = btn.innerText.toLowerCase();
+      btn.style.display = text.includes(query) ? "block" : "none";
     });
-  </script>
-  <meta charset="UTF-8">
-  <title>Supernova FX</title>
-  <link rel="icon" href="icons8-star-64.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  }
+</script>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="content">
-    <p>Only one star shines the brightest...</p>
-    <h1>Supernova FX: Games</h1>
-
-    <div style="display: flex; gap: 12px; justify-content: center;">
-      <button class="gx-button" onclick="window.location.href='https://bit.ly/supernovagx'">Visit Supernova GX</button>
-      <button class="gx-button" onclick="window.location.href='blocker.html'">Go to the Blocker</button>
-      <button class="gx-button" onclick="window.location.href='settings.html'">⚙️ Settings</button>
-    </div>
-
-    <div class="game-grid">
-      <button onclick="launchStealth('https://3kh0isgood.github.io/projects/1/index.html')">🧩 1</button>
+<input id="search" class="search-box" type="text" placeholder="Search games..." oninput="filterGames()">
+<div class="game-grid">
+	  <button onclick="launchStealth('https://3kh0isgood.github.io/projects/1/index.html')">🧩 1</button>
       <button onclick="launchStealth('https://3kh0isgood.github.io/projects/1v1lol/index.html')">⚔️ 1v1.LOL</button>
       <button onclick="launchStealth('https://3kh0isgood.github.io/projects/1v1space/')">🚀 1v1.Space</button>
       <button onclick="launchStealth('https://3kh0isgood.github.io/projects/10-minutes-till-dawn/')">🌘 10 Minutes Till Dawn</button>
@@ -159,38 +185,6 @@
       <button onclick="launchStealth('https://www.friv.cm/tunnel-rush/fullscreen/')">🌪️ Tunnel Rush</button>
       <button onclick="launchStealth('https://wordle-vanilla.vercel.app/')">🔤 Wordle</button>
       <button onclick="launchStealth('https://www.friv.cm/zombs-royale/fullscreen/')">🧟 Zombs Royale</button>      
-    </div>
-  </div>
-
-  <script>
-    function launchStealth(url) {
-      const win = window.open('about:blank', '_blank');
-      const doc = win.document;
-      doc.write(`
-        <html>
-          <head>
-            <title>Supernova FX Games</title>
-            <style>
-              html, body {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                background-color: #000;
-              }
-              iframe {
-                border: none;
-                width: 100%;
-                height: 100%;
-              }
-            </style>
-          </head>
-          <body>
-            <iframe src="${url}" allowfullscreen></iframe>
-          </body>
-        </html>
-      `);
-      doc.close();
-    }
-  </script>
+</div>
 </body>
 </html>
